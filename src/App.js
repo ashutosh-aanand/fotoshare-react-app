@@ -1,7 +1,9 @@
+import Title from "./comps/Title";
+
 function App() {
   return (
-    <div className="App">
-      Hello Everyone !
+    <div className="app">
+      <Title />
     </div>
   );
 }
