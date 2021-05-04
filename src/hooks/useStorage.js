@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {projectStorage} from '../firebase/config';
+import {projectStorage, projectFirestore, timestamp } from '../firebase/config';
 
 // this hook will return progress, error, and url 
 //  of the file being uploaded.
@@ -11,6 +11,10 @@ const useStorage = (file) => {
     useEffect(()=>{
         // references
         const storageRef = projectStorage.ref(file.name);
+        
+        // connecting to an existing or creating a new collection named
+        //  fotos in firebasestore database.
+        const collectionRef = projectFirestore.collection('fotos');
 
         storageRef.put(file).on('state_changed', (snap)=>{
             let percentage = (snap.bytesTransferred / snap.totalBytes)*100;
@@ -19,6 +23,12 @@ const useStorage = (file) => {
             setError(err);
         }, async ()=>{
             const url = await storageRef.getDownloadURL();
+            
+            // storing image data in database in 'fotos' collection
+            //  through its ref
+            const createdAt = timestamp();
+            collectionRef.add({ url, createdAt });
+            
             setUrl(url);
         })
     }, [file]);
