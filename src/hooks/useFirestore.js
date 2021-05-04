@@ -17,7 +17,8 @@ const useFirestore = (collection) => {
             });
             setDocs(documents);
         });
-
+        
+        // call unsub() to disconnect
         return ()=> unsub();
 
     }, [collection])
