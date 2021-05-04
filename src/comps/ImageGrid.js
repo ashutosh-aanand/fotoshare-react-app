@@ -1,4 +1,5 @@
 import useFirestore from "../hooks/useFirestore";
+import { motion } from 'framer-motion'
 
 const ImageGrid = ({ setSelImgUrl }) => {
 
@@ -8,14 +9,17 @@ const ImageGrid = ({ setSelImgUrl }) => {
     return (
         <div className="img-grid">
             { docs && docs.map( doc => (
-                <div className="img-wrap"
+                <motion.div className="img-wrap" key={doc.id}
+                layout
+                whileHover={{opacity: 1}}
                 onClick={()=> setSelImgUrl(doc.url)}
                 >
                     <img src={doc.url} alt="image"/>
-                </div>
+                </motion.div>
             )) }
         </div>
     );
 }
+// key={doc.id} is important for react to track each item and apply animation to it.
  
 export default ImageGrid;
