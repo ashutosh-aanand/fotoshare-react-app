@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const Modal = ({ selImgUrl, setSelImgUrl }) => {
 
     // to unmount Modal when the backdrop is clicked (not the image)
@@ -12,9 +14,15 @@ const Modal = ({ selImgUrl, setSelImgUrl }) => {
     }
 
     return (
-        <div className="backdrop" onClick={handleClick}>
-            <img src={selImgUrl} alt="selected img"/>
-        </div>
+        <motion.div className="backdrop" onClick={handleClick}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+        >
+            <motion.img src={selImgUrl} alt="selected img"
+                initial={{y: "-100vh"}}
+                animate={{y: 0 }}
+            />
+        </motion.div>
     );
 }
  
