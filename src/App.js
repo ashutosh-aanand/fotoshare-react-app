@@ -12,7 +12,7 @@ function App() {
       <Title />
       <Upload />
       <ImageGrid setSelImgUrl={setSelImgUrl} />
-      { selImgUrl && <Modal selImgUrl={selImgUrl} /> }
+      { selImgUrl && <Modal selImgUrl={selImgUrl} setSelImgUrl={setSelImgUrl} /> }
     </div>
   );
 }
