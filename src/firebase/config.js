@@ -8,7 +8,7 @@ import 'firebase/firestore'
 require('dotenv').config();
 
 
-console.log(process.env.apiKey)
+// console.log(process.env.apiKey)
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
