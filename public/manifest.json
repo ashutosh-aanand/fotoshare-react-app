@@ -1,0 +1,15 @@
+{
+    "short_name": "fs",
+    "name": "fotoshare",
+    "icons": [
+        {
+            "src": "/images/logo.png",
+            "type": "image/png",
+            "sizes": "500x500"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#efb6b2",
+    "background_color": "#000000"
+}
